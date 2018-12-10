@@ -1,0 +1,86 @@
+\documentclass[modern]{aastex62}
+
+\usepackage{stix}
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+\graphicspath{{./}{figures/}}
+\shorttitle{PDS70}
+\shortauthors{Zhou et al.}
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%  \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+\begin{document}
+
+\title{PDS70 Notes}
+
+\correspondingauthor{Yifan Zhou}
+\email{yzhou@as.arizona.edu}
+
+\author{Yifan Zhou}
+\affil{Steward Observatory}
+\begin{abstract}
+  
+\end{abstract}
+\keywords{}
+\section{Information from literatures}
+Results from \citet{Keppler2018,Wagner2018} are in Table~\ref{tab:PDS70}
+\begin{deluxetable}{ll}
+  \tablenum{1}
+  \tablecaption{Planetary-mass Information Summary \label{tab:PDS70}}
+  \tablehead{
+    \colhead{Name} &
+    \colhead{Value}
+  }
+  \startdata
+  J Phot & $9.55\pm0.024$ mag\\
+  Distance & $113.43\pm0.52$ pc\\
+  Separation & 0.195 mas\\
+  PA & $155^{\circ}$\\
+  H-$\alpha$ contrast & $10^{-3}$\\
+  \enddata
+\end{deluxetable}
+
+\section{TinyTim PSF fitting results}
+
+TinyTim PSFs were fit to two HST/UVIS \texttt{flt} frames. The aim was to measure the centroid position and brightness of PDS70A. The residuals for the best-fit subtraction results are shown in Figure \ref{fig:tinytim}. The best-fit parameters are in Table \ref{tab:tinytim}
+
+\begin{figure*}[htbp]
+  \centering
+  \plottwo{figures/flt_1_TinyTim_residual.pdf}{figures/flt_2_TinyTim_residual.pdf}
+  \caption{TinyTim PSF subtraction residuals}
+  \label{fig:tinytim}
+\end{figure*}
+
+\input{table_tt}
+
+\section{KLIP reduction}
+Next I reduced the data using KLIP method \citep{Soummer2012}. The PSF library was the recently released WFC3/UVIS PSF library. I used the entire F656N library without any further PSF selection (assuming all the PSFs are good).
+
+
+\section{PSF injection test}
+I used PSF injection test to examine the contrast limit of the observations.
+
+\bibliographystyle{yahapj}
+\bibliography{library}
+
+\end{document}
+
+% End of file `sample62.tex'.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
